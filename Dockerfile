@@ -3,6 +3,7 @@ FROM rust:latest as builder
 RUN apt-get update && apt-get install -y libfontconfig1-dev libgraphite2-dev libharfbuzz-dev libicu-dev zlib1g-dev
 RUN cargo install tectonic --force --vers 0.3.0
 
+# Temporary beta testing https://tectonic.newton.cx/t/texlive-2020-0-bundle-ready-for-testing/252
 RUN mkdir -p ~/.config/Tectonic/
 RUN echo "[[default_bundles]]" | tee --append ~/.config/Tectonic/config.toml
 RUN echo "url = \"https://ttassets.z13.web.core.windows.net/tlextras-2020.0r0.tar\"" | tee --append ~/.config/Tectonic/config.toml
