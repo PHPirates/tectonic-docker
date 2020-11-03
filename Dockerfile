@@ -3,6 +3,10 @@ FROM rust:latest as builder
 RUN apt-get update && apt-get install -y libfontconfig1-dev libgraphite2-dev libharfbuzz-dev libicu-dev zlib1g-dev
 RUN cargo install tectonic --force --vers 0.3.0
 
+RUN mkdir -p ~/.config/Tectonic/
+RUN echo "[[default_bundles]]" | tee --append ~/.config/Tectonic/config.toml
+RUN echo "url = \"https://ttassets.z13.web.core.windows.net/tlextras-2020.0r0.tar\"" | tee --append ~/.config/Tectonic/config.toml
+
 WORKDIR /usr/src/tex
 RUN wget 'https://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/2.14/binaries/Linux/biber-linux_x86_64.tar.gz'
 RUN tar -xvzf biber-linux_x86_64.tar.gz

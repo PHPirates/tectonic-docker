@@ -253,3 +253,5 @@ TSWLatexianTemp*
 
 # ignore open word files
 ~$*.docx
+
+.idea/
